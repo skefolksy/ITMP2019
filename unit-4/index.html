@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Unit-4 Timing</title>
+	<style type="text/css">
+	body{
+		margin:0;
+	}
+#rainbow{
+	--size:50px;
+	--hue:0;
+	font-size: 0;
+	}
+.fuse{
+	transition: width .3s;
+	height:var(--size);
+	width: var(--size);
+	background: hsl(var(--hue),80%,70%);
+	display: inline-block;
+	margin: 10;
+	border-radius: 50%;
+}
+#howManyRainbowStripsDoYouWantHeu{
+	padding: 0.5em;
+	width: 2em;
+	margin-bottom: 0.2em; 
+	font-size: 2em;
+	border: 1px solid #eee;
+	border-radius: 0.1em; 
+}
+button{
+	font-size: 2em;
+	border: 1px solid #eee;
+	border-radius: 0.1em; 
+	padding: 0.5em;
+}
+</style>
+</head>
+<body>
+	<input type="number" id="howManyRainbowStripsDoYouWantHeu" min="0" max="999" value="6">
+	<button onclick="rainbowHaiDooNoy()" style="margin: 5;">Go!</button>
+	<button onclick="PlayAni()" style="margin: 5;">Play!</button>
+	<button onclick="StopAni()" style="margin: 5;">Stop!</button>
+	<div id="rainbow">
+	</div>
+	<script type="text/javascript">
+		
+		function rainbowHaiDooNoy(){
+			theNum = howManyRainbowStripsDoYouWantHeu.value;
+			rainbow.innerHTML = '';
+			for (let i = 0; i < theNum; i++) {
+				setTimeout(function(){
+					rainbow.innerHTML += `<div class="fuse" style="--hue:${i*(180/theNum)}"></div>`;
+				},20*i);
+
+			}
+
+		}
+
+		rainbowHaiDooNoy()
+
+		function PlayAni(){
+			theFuse = document.querySelectorAll('.fuse');
+            theFuseSize = theFuse.length;
+            j = theFuseSize-1;
+            k = 0;
+            thePlay = setInterval(function(){
+            	if (k>= theFuseSize){k=0}
+            	if (j>=theFuseSize){j=0}
+            		theFuse[k].style.transform = "scale(2)";
+            		theFuse[j].style.transform = "scale(1)";
+            	k++;
+            	j++;
+            },300);
+        }
+
+        function StopAni(){
+        	clearInterval(thePlay);
+        	theFuse[j].style.transform = "scale(1)";
+        }
+
+
+	</script>
+</body>
+</html>
