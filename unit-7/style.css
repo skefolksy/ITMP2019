@@ -1,0 +1,13 @@
+.yoyo {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+    background: blue;
+}
+
+@keyframes blink {
+    from{opacity: 1;}
+    to{opacity: 0.3;}
+}

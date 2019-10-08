@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ใรามยจต<!DOCTYPE html>
 <html>
 
 <head>
@@ -173,11 +173,13 @@
 			<span id="score" class="hidden">score : <span id="scoreVal">0</span></span>
 		</div>
 		<div id="char" x="0" y="4"></div>
+		<!-- <div x="1" y="-1" class="fruit f1" id="fruit_0"></div> -->
 	</div>
 	<div id="control">
 		<button class="cmd" onclick="moveChar(-1)"><</button>
 		<button class="cmd" onclick="moveChar(+1)">></button>
 	</div>
+
 
 	<script>
 		nowID = 0;
@@ -201,9 +203,9 @@
 			f.setAttribute("x", rand(5));
 			f.setAttribute("y", -1);
 			f.setAttribute("class", "fruit f" + rand(5));
-			f.setAttribute("id", "fruit_" + nowID);
+			// f.setAttribute("id", "fruit_" + nowID);
 			wrap.appendChild(f);
-			nowID++;
+			// nowID++;
 		}
 
 		function fallingSlowly() {
@@ -211,7 +213,7 @@
 			for (var i = 0; i < f.length; i++) {
 				let nowY = f[i].getAttribute("y");
 				let nowX = f[i].getAttribute("x");
-				let charX = char.getAttribute("x");
+				let charX = char.getAttribute("x"); //ตัว char อยู่ที่ตำแหน่ง x ที่เท่าไหร่//
 				nowY = parseInt(nowY);
 				nowX = parseInt(nowX);
 				charX = parseInt(charX);

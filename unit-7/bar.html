@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>My Chart!!</title>
+	<link rel="stylesheet" type="text/css" href="https://jabont.com/jayss/jayss.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body,
+		.ffont,
+		.title.ffont,
+		h1,
+		h2,
+		h3,
+		h4 {
+			font-family: 'Roboto Condensed', sans-serif !important;
+		}
+
+		.bar .label {
+			width: 100px;
+			display: inline-block;
+		}
+
+		.bar .chart {
+			width: 10px;
+			height: 1em;
+			display: inline-block;
+			transition: all 1s;
+		}
+
+		.bar .chart.close {
+			width: 10px !important;
+		}
+
+		#topLine {
+			height: 2px;
+			background: deeppink;
+			width: 0%;
+			position: fixed;
+			top: 0;
+			left: 0;
+		}
+
+		#paragraph {
+			transform: scale(1);
+			transition: all 3s;
+		}
+
+		#paragraph.small {
+			transform: scale(0.2);
+		}
+	</style>
+</head>
+
+<body>
+	<div id="s1" class="fullscreen bg-smoke padding-l v-middle-flex">
+		<div class="to-center">
+			<h1>Welcome</h1>
+			<p>Please scroll down</p>
+		</div>
+	</div>
+	<div id="s2" class="fullscreen bg-white padding-l v-middle-flex">
+		<div class="to-center">
+			<h1>My Learning</h1>
+			<sp class="xl"></sp>
+			<div class="t-left">
+				<div class="bar">
+					<div class="label">Thai</div>
+					<div class="chart close" style="width: 180px; background-color: #003049;"></div>
+				</div>
+				<div class="bar">
+					<div class="label">English</div>
+					<div class="chart close" style="width: 200px; background-color: #2978A0;"></div>
+				</div>
+				<div class="bar">
+					<div class="label">Sciene</div>
+					<div class="chart close" style="width: 20px; background-color: #F77F00;"></div>
+				</div>
+				<div class="bar">
+					<div class="label">Math</div>
+					<div class="chart close" style="width: 40px; background-color: #FCBF49;"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div id="s3" class="fullscreen bg-smoke padding-l v-middle-flex">
+		<div class="to-center">
+			<h1>I'm Genius, right?</h1>
+			<sp class="xl"></sp>
+			<p id="paragraph" class="small">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</div>
+	</div>
+	<div id="topLine">
+
+	</div>
+
+	<script>
+		window.onscroll = function () {
+			topLine();
+			chart();
+			paragraph();
+		};
+
+		function topLine() {
+			let winScroll = document.body.scrollTop || document.documentElement.scrollTop; // ดูว่า top เป็นเท่าไหร่
+			let height = document.documentElement.scrollHeight - document.documentElement.clientHeight; // ความสูงของหน้าจอทั้งหมด
+			let scrolled = (winScroll / height) * 100; // เลื่อนมากี่ % ของจอแล้ว (ดูตำแหน่ง)
+			document.getElementById('topLine').style.width = scrolled + "%"; // ตั้งค่าให้ width ของ topLine มีขนาดเท่ากับ scrolled
+		}
+
+		function chart() {
+			let s2bcr = document.getElementById('s2').getBoundingClientRect();
+			if (s2bcr.top <= 0 && s2bcr.top >= -s2bcr.height / 2) {
+				[].forEach.call(document.getElementsByClassName('chart'), function (el) {
+					el.classList.remove('close')
+				});
+			} else {
+				[].forEach.call(document.getElementsByClassName('chart'), function (el) {
+					el.classList.add('close')
+				});
+			}
+		}
+
+		function paragraph() {
+			let s3bcr = document.getElementById('s3').getBoundingClientRect();
+			if (s3bcr.top <= 0) {
+				document.getElementById('paragraph').classList.remove('small');
+			} else {
+				document.getElementById('paragraph').classList.add('small');
+			}
+			
+		}
+	</script>
+</body>
+
+</html>
