@@ -98,11 +98,9 @@ background-color: #ddd;
 
 <body>
 
-<!--
-
--->
 
 <h2>เพิ่มผลไม้</h2>
+
 
 <button onclick="addFruit(1)">กล้วย</button>
 
@@ -136,4 +134,27 @@ background-color: #ddd;
 
 </body>
 
+<button onclick="addFruit(1)">กล้วย</button>
+<button onclick="addFruit(2)">ส้ม</button>
+<button onclick="addFruit(3)">แตงโม</button>
+<button onclick="addFruit(4)">องุ่น</button>
+<hr>
+<div id="basket"><div class="fruit f1"></div></div>
+<br><br>
+<button onclick ="eat()" > หยิบกิน </button>
+<script>
+	function addFruit(i){
+		var fruit = document.createElement("DIV");
+		fruit.classList.add('fruit');
+		fruit.classList.add('f'+i);
+		document.getElementById("basket").appendChild(fruit); 
+	}
+	
+  	function eat(){
+
+  		var basket = document.getElementById("basket");
+  		basket.removeChild(basket.firstChild);
+  	}
+</script> 
+</body>
 </html>
