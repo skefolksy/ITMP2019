@@ -1,4 +1,65 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <form onsubmit="return register()">
+
+                <h2>ลงทะเบียนร่วมงาน</h2>
+                
+                <input type="text" class="info" placeholder="รหัสนักศึกษา" required>
+                
+                <!-- <input type="text" class="info" placeholder="ชื่อ" required>
+                
+                <input type="text" class="info" placeholder="นามสกุล" required> -->
+                
+                <button onclick="Regis()">ลงทะเบียน</button>
+                
+                </form>
+                
+                <br><hr><br>
+                
+                <table>
+                
+                <thead>
+                
+                <th>ลำดับที่</th>
+                
+                <th>รหัสนักศึกษา</th>
+                
+                <!-- <th>ชื่อ</th>
+                
+                <th>นามสกุล</th> -->
+                
+                </thead>
+                
+                <tbody id="registerList">
+                
+                <tr></tr>
+                
+                </tbody>
+                
+                </table>
+
+        <script>
+            var i = 1;
+            function Regis() {
+                var informa = document.getElementsByClassName("info");
+                var people = document.createElement("TR");
+                var list = document.getElementById("registerList");
+                    list.appendChild(people);
+                    people.innerHTML = `<td>${i}</td>
+                    <td>${document.querySelector('.info').value}</td>`;
+                    document.querySelector('.info').value = "";
+                    i++;
+                    return false;
+            }
+        </script>
+
 <html>
 <head>
 	<title>Dom 5 - Register</title>
